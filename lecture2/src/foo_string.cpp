@@ -15,3 +15,9 @@ FooString::~FooString() {
 void FooString::show() {
     std::cout << buf;
 }
+
+int FooString::length() {
+    int string_length = 0;
+    for (; buf[string_length] != '\0'; string_length++) { }
+    return string_length + 1;
+}
