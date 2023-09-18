@@ -13,7 +13,7 @@ FooString::~FooString() {
 }
 
 void FooString::show() {
-    std::cout << buf;
+    std::cout << buf << std::endl;
 }
 
 int FooString::length() {
