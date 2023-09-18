@@ -1,5 +1,7 @@
 #include "foo_string.h"
 #include <iostream>
+#include <string>
+#include <sstream>
 
 #define ASSERT(condition) \
     do { \
@@ -29,6 +31,15 @@
         ASSERT(foo_string_1.compare(foo_string_2) == is_identical); \
     } while (false)
 
+#define ASSERT_ADD_STR(initial_string, adding_string, new_string) \
+    do { \
+        FooString foo_string = FooString((char*)initial_string); \
+        foo_string.add(adding_string); \
+        ASSERT(get_foo_string_buf(foo_string) == std::string(new_string)); \
+    } while (false)
+
+std::string get_foo_string_buf(FooString&);
+
 int main() {
     ASSERT_LENGTH("Hello world", 12);
     ASSERT_LENGTH(" ", 2);
@@ -43,5 +54,24 @@ int main() {
     ASSERT_COMPARE_FOOSTR("1", "2", false);
     ASSERT_COMPARE_FOOSTR("", "", true);
 
+    ASSERT_ADD_STR("Hello", " world!", "Hello world!");
+    ASSERT_ADD_STR("asdf", NULL, "asdf");
+    ASSERT_ADD_STR("world", "", "world");
+    ASSERT_ADD_STR("", "asd", "asd");
+    ASSERT_ADD_STR("", NULL, "");
+
     return 0;
+}
+
+std::string get_foo_string_buf(FooString& foo_string) {
+    std::streambuf* coutStream = std::cout.rdbuf();
+    std::ostringstream tempStream;
+    std::cout.rdbuf(tempStream.rdbuf());
+
+    foo_string.show();
+
+    std::cout.rdbuf(coutStream);
+
+    std::string output = tempStream.str();
+    return output.substr(0, output.size() - 1);
 }

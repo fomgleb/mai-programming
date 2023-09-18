@@ -39,3 +39,25 @@ bool FooString::compare(char* str) {
     }
     return false;
 }
+
+void FooString::add(char* str) {
+    if (str == NULL || strlen(str) == 0) {
+        return;
+    }
+
+    int current_str_length = length() - 1;
+    size_t adding_str_length = strlen(str);
+    size_t new_str_length = current_str_length + adding_str_length;
+
+    char* new_str = new char[new_str_length + 1];
+    for (size_t i = 0; i < current_str_length; i++) {
+        new_str[i] = buf[i];
+    }
+    for (size_t i = 0; i < adding_str_length; i++) {
+        new_str[i + current_str_length] = str[i];
+    }
+    new_str[new_str_length] = '\0';
+
+    delete[] buf;
+    buf = new_str;
+}
