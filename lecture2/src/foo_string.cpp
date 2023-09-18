@@ -9,7 +9,7 @@ FooString::FooString(char* tbuf) {
 }
 
 FooString::~FooString() {
-    delete buf;
+    delete[] buf;
 }
 
 void FooString::show() {
