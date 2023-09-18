@@ -22,6 +22,10 @@ int FooString::length() {
     return string_length + 1;
 }
 
+bool FooString::compare(FooString& str) {
+    return compare(str.buf);
+}
+
 bool FooString::compare(char* str) {
     if (str == NULL) {
         return false;

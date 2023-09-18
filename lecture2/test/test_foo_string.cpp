@@ -22,6 +22,13 @@
         ASSERT(foo_string.compare((char*)string_2) == is_identical); \
     } while (false)
 
+#define ASSERT_COMPARE_FOOSTR(string_1, string_2, is_identical) \
+    do { \
+        FooString foo_string_1 = FooString((char*)string_1); \
+        FooString foo_string_2 = FooString((char*)string_2); \
+        ASSERT(foo_string_1.compare(foo_string_2) == is_identical); \
+    } while (false)
+
 int main() {
     ASSERT_LENGTH("Hello world", 12);
     ASSERT_LENGTH(" ", 2);
@@ -31,6 +38,10 @@ int main() {
     ASSERT_COMPARE_STR("1", "2", false);
     ASSERT_COMPARE_STR("32", NULL, false);
     ASSERT_COMPARE_STR("", "", true);
+
+    ASSERT_COMPARE_FOOSTR("Hello word", "Hello word", true);
+    ASSERT_COMPARE_FOOSTR("1", "2", false);
+    ASSERT_COMPARE_FOOSTR("", "", true);
 
     return 0;
 }
