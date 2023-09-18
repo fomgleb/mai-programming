@@ -7,5 +7,6 @@ public:
     int length();
     bool compare(FooString& str);
     bool compare(char* str);
+    void add(FooString&);
     void add(char*);
 };

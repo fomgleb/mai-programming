@@ -38,6 +38,14 @@
         ASSERT(get_foo_string_buf(foo_string) == std::string(new_string)); \
     } while (false)
 
+#define ASSERT_ADD_FOOSTR(initial_string, adding_string, new_string) \
+    do { \
+        FooString foo_string = FooString((char*)initial_string); \
+        FooString adding_foo_string = FooString((char*)adding_string); \
+        foo_string.add(adding_foo_string); \
+        ASSERT(get_foo_string_buf(foo_string) == std::string(new_string)); \
+    } while (false)
+
 std::string get_foo_string_buf(FooString&);
 
 int main() {
@@ -59,6 +67,10 @@ int main() {
     ASSERT_ADD_STR("world", "", "world");
     ASSERT_ADD_STR("", "asd", "asd");
     ASSERT_ADD_STR("", NULL, "");
+
+    ASSERT_ADD_FOOSTR("Hello", " world!", "Hello world!");
+    ASSERT_ADD_FOOSTR("world", "", "world");
+    ASSERT_ADD_FOOSTR("", "asd", "asd");
 
     return 0;
 }

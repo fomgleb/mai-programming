@@ -40,6 +40,10 @@ bool FooString::compare(char* str) {
     return false;
 }
 
+void FooString::add(FooString& str) {
+    add(str.buf);
+}
+
 void FooString::add(char* str) {
     if (str == NULL || strlen(str) == 0) {
         return;
