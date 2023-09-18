@@ -11,17 +11,16 @@
     } while (false)
 
 #define ASSERT_LENGTH(str, len) \
-{ \
-    FooString foo_string = FooString((char *)str); \
-    ASSERT(foo_string.length() == len); \
-}
-
+    do { \
+        FooString foo_string = FooString((char *)str); \
+        ASSERT(foo_string.length() == len); \
+    } while (false)
 
 #define ASSERT_COMPARE_STR(string_1, string_2, is_identical) \
-{ \
-    FooString foo_string = FooString((char *)string_1); \
-    ASSERT(foo_string.compare((char*)string_2) == is_identical); \
-}
+    do { \
+        FooString foo_string = FooString((char *)string_1); \
+        ASSERT(foo_string.compare((char*)string_2) == is_identical); \
+    } while (false)
 
 int main() {
     ASSERT_LENGTH("Hello world", 12);
