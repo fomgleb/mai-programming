@@ -8,4 +8,5 @@ class DynamicArray {
 public:
     DynamicArray(size_t);
     ~DynamicArray();
+    void print();
 };
