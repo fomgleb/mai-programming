@@ -19,7 +19,7 @@ void DynamicArray::set(size_t index, int8_t value) {
         throw out_of_range("Index " + to_string(index) + " is out of range. Array size is " + to_string(size) + ".");
     }
     if (value < -100 || value > 100) {
-        throw out_of_range("Value " + to_string(index) + "is out of range (-100, 100).");
+        throw out_of_range("Value " + to_string(value) + "is out of range (-100, 100).");
     }
     array[index] = value;
 }
