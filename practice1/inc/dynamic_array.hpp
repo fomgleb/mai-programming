@@ -17,4 +17,5 @@ public:
     int8_t get(size_t index);
     size_t getSize();
     void print();
+    void pushBack(int8_t value);
 };

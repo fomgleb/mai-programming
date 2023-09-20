@@ -47,3 +47,14 @@ void DynamicArray::print() {
     }
     std::cout << ")" << std::endl;
 }
+
+void DynamicArray::pushBack(int8_t value) {
+    if (value < -100 || value > 100) {
+        throw out_of_range("Value " + to_string(value) + "is out of range (-100, 100).");
+    }
+    int8_t* extended_array = new int8_t[size + 1];
+    std::copy(array, array + size * sizeof(int8_t), extended_array);
+    extended_array[size++] = value;
+    delete[] array;
+    array = extended_array;
+}

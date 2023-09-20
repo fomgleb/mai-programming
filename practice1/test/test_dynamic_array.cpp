@@ -45,6 +45,25 @@ TEST(DynamicArrayTest, Copying) {
     EXPECT_EQ(arr2_copy.getSize(), arr2.getSize());
 }
 
+TEST(DynamicArrayTest, pushBack) {
+    DynamicArray arr(0);
+    arr.pushBack(12);
+    EXPECT_EQ(arr.get(0), 12);
+    EXPECT_THROW(arr.pushBack(101), out_of_range);
+    EXPECT_THROW(arr.pushBack(-101), out_of_range);
+    EXPECT_EQ(arr.getSize(), 1);
+
+    DynamicArray arr2(3);
+    arr2.set(0, 43);
+    arr2.set(2, 99);
+    arr2.pushBack(57);
+    EXPECT_EQ(arr2.get(0), 43);
+    EXPECT_EQ(arr2.get(1), 0);
+    EXPECT_EQ(arr2.get(2), 99);
+    EXPECT_EQ(arr2.get(3), 57);
+    EXPECT_EQ(arr2.getSize(), 4);
+}
+
 int main(int argc, char** argv) {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
