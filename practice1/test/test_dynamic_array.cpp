@@ -49,24 +49,3 @@ int main(int argc, char** argv) {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
 }
-
-
-
-
-
-
-
-
-
-
-// std::string redirect_cout(std::function<void()> func) {
-//     std::streambuf* coutStream = std::cout.rdbuf();
-//     std::ostringstream tempStream;
-//     std::cout.rdbuf(tempStream.rdbuf());
-
-//     func();
-
-//     std::cout.rdbuf(coutStream);
-
-//     return tempStream.str();
-// }
