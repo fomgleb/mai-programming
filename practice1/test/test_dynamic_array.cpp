@@ -30,6 +30,21 @@ TEST(DynamicArrayTest, get) {
     EXPECT_THROW(arr2.get(0), std::out_of_range);
 }
 
+TEST(DynamicArrayTest, Copying) {
+    DynamicArray arr(8);
+    arr.set(3, 83);
+    arr.set(7, 12);
+    DynamicArray arr_copy(arr);
+    EXPECT_EQ(arr_copy.getSize(), arr.getSize());
+    for (size_t i = 0; i < arr.getSize(); ++i) {
+        EXPECT_EQ(arr_copy.get(i), arr.get(i));
+    }
+
+    DynamicArray arr2(0);
+    DynamicArray arr2_copy(arr2);
+    EXPECT_EQ(arr2_copy.getSize(), arr2.getSize());
+}
+
 int main(int argc, char** argv) {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();

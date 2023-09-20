@@ -8,6 +8,12 @@ DynamicArray::~DynamicArray() {
     delete[] array;
 }
 
+DynamicArray::DynamicArray(const DynamicArray &dynamic_array) {
+    size = dynamic_array.size;
+    array = new int8_t[size];
+    std::copy(dynamic_array.array, dynamic_array.array + size * sizeof(int8_t), array);
+}
+
 void DynamicArray::set(size_t index, int8_t value) {
     if (index >= size) {
         throw out_of_range("Index " + to_string(index) + " is out of range. Array size is " + to_string(size) + ".");
