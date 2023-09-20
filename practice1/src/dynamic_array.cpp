@@ -25,6 +25,10 @@ int8_t DynamicArray::get(size_t index) {
     return array[index];
 }
 
+size_t DynamicArray::getSize() {
+    return size;
+}
+
 void DynamicArray::print() {
     std::cout << "(";
     for (size_t i = 0; i < size; i++) {
