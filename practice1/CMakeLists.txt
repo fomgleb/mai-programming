@@ -22,4 +22,11 @@ if(GIT_FOUND AND EXISTS "${PROJECT_SOURCE_DIR}/.git")
 endif()
 
 include_directories(${HEADER_DIR})
-file(GLOB SOURCES "${SOURCE_DIR}/*.cpp" "${HEADER_DIR}/*.h")
+file(GLOB SOURCES "${SOURCE_DIR}/*.cpp" "${HEADER_DIR}/*.hpp")
+
+add_subdirectory(libs/googletest)
+include(GoogleTest)
+
+add_executable(test_dynamic_array test/test_dynamic_array.cpp ${SOURCES})
+target_link_libraries(test_dynamic_array gtest_main)
+gtest_discover_tests(test_dynamic_array)
