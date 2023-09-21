@@ -32,18 +32,18 @@ void DynamicArray::set(size_t index, int8_t value) {
     array[index] = value;
 }
 
-int8_t DynamicArray::get(size_t index) {
+int8_t DynamicArray::get(size_t index) const {
     if (index >= size) {
         throw out_of_range("Index " + to_string(index) + " is out of range. Array size is " + to_string(size) + ".");
     }
     return array[index];
 }
 
-size_t DynamicArray::getSize() {
+size_t DynamicArray::getSize() const {
     return size;
 }
 
-void DynamicArray::print() {
+void DynamicArray::print() const {
     std::cout << "(";
     for (size_t i = 0; i < size; i++) {
         std::cout << array[i];

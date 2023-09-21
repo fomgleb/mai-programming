@@ -15,8 +15,8 @@ public:
     ~DynamicArray();
     DynamicArray(const DynamicArray &dynamic_array);
     void set(size_t index, int8_t value);
-    int8_t get(size_t index);
-    size_t getSize();
-    void print();
+    int8_t get(size_t index) const;
+    size_t getSize() const;
+    void print() const;
     void pushBack(int8_t value);
 };
