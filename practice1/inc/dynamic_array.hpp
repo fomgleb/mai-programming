@@ -11,6 +11,7 @@ class DynamicArray {
     size_t size = 0;
 public:
     DynamicArray(size_t);
+    DynamicArray(std::initializer_list<int8_t> init);
     ~DynamicArray();
     DynamicArray(const DynamicArray &dynamic_array);
     void set(size_t index, int8_t value);

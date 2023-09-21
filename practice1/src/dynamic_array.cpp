@@ -4,6 +4,14 @@ DynamicArray::DynamicArray(size_t size) : size(size) {
     array = new int8_t[size]();
 }
 
+DynamicArray::DynamicArray(std::initializer_list<int8_t> init) : size(init.size()) {
+    array = new int8_t[size]();
+    auto it = init.begin();
+    for (size_t i = 0; i < size; ++i, ++it) {
+        set(i, *it);
+    }
+}
+
 DynamicArray::~DynamicArray() {
     delete[] array;
 }

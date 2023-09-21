@@ -30,6 +30,19 @@ TEST(DynamicArrayTest, get) {
     EXPECT_THROW(arr2.get(0), std::out_of_range);
 }
 
+TEST(DynamicArrayTest, Constructor_InitializerList) {
+    DynamicArray arr1{42, 29};
+    EXPECT_EQ(arr1.get(0), 42);
+    EXPECT_EQ(arr1.get(1), 29);
+    EXPECT_EQ(arr1.getSize(), 2);
+
+    DynamicArray arr2{};
+    EXPECT_EQ(arr2.getSize(), 0);
+
+    EXPECT_THROW(DynamicArray arr3{-101}, out_of_range);
+    EXPECT_THROW(DynamicArray arr3{102}, out_of_range);
+}
+
 TEST(DynamicArrayTest, Copying) {
     DynamicArray arr(8);
     arr.set(3, 83);
