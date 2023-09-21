@@ -72,3 +72,9 @@ void DynamicArray::add(const DynamicArray &adding_array) {
         array[i] += adding_array.get(i);
     }
 }
+
+void DynamicArray::subtract(const DynamicArray &subtracing_array) {
+    for (size_t i = 0; i < size && i < subtracing_array.size; i++) {
+        array[i] -= subtracing_array.get(i);
+    }
+}

@@ -20,4 +20,5 @@ public:
     void print() const;
     void pushBack(int8_t value);
     void add(const DynamicArray &array);
+    void subtract(const DynamicArray &array);
 };

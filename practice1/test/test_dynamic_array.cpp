@@ -98,6 +98,27 @@ TEST(DynamicArrayTest, add) {
     EXPECT_EQ(arr5.getSize(), 1);
 }
 
+TEST(DynamicArrayTest, subtract) {
+    DynamicArray arr1{38, 30, -1};
+    DynamicArray arr2{0, 11, 84, 92};
+    arr1.subtract(arr2);
+    EXPECT_EQ(arr1.get(0), 38);
+    EXPECT_EQ(arr1.get(1), 19);
+    EXPECT_EQ(arr1.get(2), -85);
+    EXPECT_EQ(arr1.getSize(), 3);
+
+    DynamicArray arr3(0);
+    DynamicArray arr4(0);
+    arr3.subtract(arr4);
+    EXPECT_EQ(arr3.getSize(), 0);
+
+    DynamicArray arr5{42};
+    DynamicArray arr6{6, 32, 0, 23};
+    arr5.subtract(arr6);
+    EXPECT_EQ(arr5.get(0), 36);
+    EXPECT_EQ(arr5.getSize(), 1);
+}
+
 int main(int argc, char** argv) {
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
