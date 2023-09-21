@@ -28,8 +28,10 @@ add_library(sources_lib STATIC ${SOURCES})
 target_include_directories(sources_lib PUBLIC ${HEADER_DIR})
 
 # Creating executable file for main.cpp
-add_executable(main ${SOURCE_DIR}/main.cpp)
-target_link_libraries(main sources_lib)
+if(EXISTS "${SOURCE_DIR}/main.cpp")
+    add_executable(main ${SOURCE_DIR}/main.cpp)
+    target_link_libraries(main sources_lib)
+endif()
 
 # Testing settings
 enable_testing()
