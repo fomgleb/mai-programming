@@ -66,3 +66,9 @@ void DynamicArray::pushBack(int8_t value) {
     delete[] array;
     array = extended_array;
 }
+
+void DynamicArray::add(const DynamicArray &adding_array) {
+    for (size_t i = 0; i < size && i < adding_array.size; i++) {
+        array[i] += adding_array.get(i);
+    }
+}

@@ -19,4 +19,5 @@ public:
     size_t getSize() const;
     void print() const;
     void pushBack(int8_t value);
+    void add(const DynamicArray &array);
 };
