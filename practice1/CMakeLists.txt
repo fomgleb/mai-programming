@@ -1,12 +1,9 @@
+# General settings
 cmake_minimum_required(VERSION 3.27)
 project(practice1)
 set(CMAKE_CXX_STANDARD 17)
-enable_testing()
 
-set(SOURCE_DIR src)
-set(HEADER_DIR inc)
-set(TESTS_DIR test)
-
+# Git submodules updating
 option(GIT_SUBMODULE "Check submodules during build" ON)
 if(GIT_SUBMODULE)
     message(STATUS "Updating submodules")
@@ -19,12 +16,31 @@ if(GIT_SUBMODULE)
     endif()
 endif()
 
-include_directories(${HEADER_DIR})
-file(GLOB SOURCES "${SOURCE_DIR}/*.cpp" "${HEADER_DIR}/*.hpp")
+# Paths to directories
+set(SOURCE_DIR src)
+set(HEADER_DIR inc)
+set(TESTS_DIR test)
 
+# Creating a static library from sources
+file(GLOB SOURCES "${SOURCE_DIR}/*cpp")
+list(REMOVE_ITEM SOURCES "${SOURCE_DIR}/main.cpp")
+add_library(sources_lib STATIC ${SOURCES})
+target_include_directories(sources_lib PUBLIC ${HEADER_DIR})
+
+# Creating executable file for main.cpp
+add_executable(main ${SOURCE_DIR}/main.cpp)
+target_link_libraries(main sources_lib)
+
+# Testing settings
+enable_testing()
 add_subdirectory(libs/googletest)
 include(GoogleTest)
 
-add_executable(test_dynamic_array ${TESTS_DIR}/test_dynamic_array.cpp ${SOURCES})
-target_link_libraries(test_dynamic_array gtest_main)
-gtest_discover_tests(test_dynamic_array)
+# Creating executable files for tests
+file(GLOB TEST_SOURCES "${TESTS_DIR}/*.cpp")
+foreach(TEST_SRC ${TEST_SOURCES})
+    get_filename_component(TEST_NAME ${TEST_SRC} NAME_WE)
+    add_executable(${TEST_NAME} ${TEST_SRC})
+    target_link_libraries(${TEST_NAME} sources_lib gtest_main)
+    gtest_discover_tests(${TEST_NAME})
+endforeach()
