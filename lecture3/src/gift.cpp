@@ -74,3 +74,7 @@ Gift::Gift(string giftFilePath) {
 Gift::~Gift() {
     questions.clear();
 }
+
+vector<shared_ptr<Question>> Gift::getQuestions() const{
+    return questions;
+}

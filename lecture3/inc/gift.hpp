@@ -20,4 +20,5 @@ class Gift {
 public:
     Gift(string giftFilePath);
     ~Gift();
+    vector<shared_ptr<Question>> getQuestions() const;
 };
