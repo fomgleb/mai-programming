@@ -26,7 +26,9 @@ optional<shared_ptr<Question>> Gift::parseOneQuestion(std::ifstream& giftFile) {
             return question;
             break;
         case '~':
-            if (symbolInAnswerName) {
+            if (symbolInQuestionName) {
+                questionNameStream << symbol;
+            } else if (symbolInAnswerName) {
                 question->addAnswer(trim_copy(answerNameStream.str()), currentAnswerIsCorrect);
                 answerNameStream.str(string());
                 answerNameStream.clear();
@@ -36,7 +38,9 @@ optional<shared_ptr<Question>> Gift::parseOneQuestion(std::ifstream& giftFile) {
 
             currentAnswerIsCorrect = false; break; 
         case '=': 
-            if (symbolInAnswerName) {
+            if (symbolInQuestionName) {
+                questionNameStream << symbol;
+            } else if (symbolInAnswerName) {
                 question->addAnswer(trim_copy(answerNameStream.str()), currentAnswerIsCorrect);
                 answerNameStream.str(string());
                 answerNameStream.clear();
