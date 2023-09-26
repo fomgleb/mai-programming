@@ -10,11 +10,12 @@ using std::ifstream;
 using std::stringstream;
 using std::optional;
 using std::nullopt;
+using std::shared_ptr;
 
 class Gift {
-    vector<Question*> questions;
-    
-    optional<Question*> parseOneQuestion(ifstream& giftFile);
+    vector<shared_ptr<Question>> questions;
+
+    optional<shared_ptr<Question>> parseOneQuestion(ifstream& giftFile);
     void parseGiftFile(ifstream& giftFile);
 public:
     Gift(string giftFilePath);

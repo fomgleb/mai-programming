@@ -1,7 +1,7 @@
 #include "gift.hpp"
 
-optional<Question*> Gift::parseOneQuestion(std::ifstream& giftFile) {
-    Question* question = new Question;
+optional<shared_ptr<Question>> Gift::parseOneQuestion(std::ifstream& giftFile) {
+    shared_ptr<Question> question = std::make_shared<Question>();
     stringstream questionNameStream;
     stringstream answerNameStream;
 
@@ -47,14 +47,13 @@ optional<Question*> Gift::parseOneQuestion(std::ifstream& giftFile) {
             currentAnswerIsCorrect = true; break;
         default:
             if (symbolInQuestionName) {
-                questionNameStream << (symbol == '\n' ? ' ' : symbol);
+                questionNameStream << symbol;
             } else if (symbolInAnswerName) {
                 answerNameStream << symbol;
             }
         }
     }
 
-    delete question;
     return nullopt;
 }
 
@@ -73,8 +72,5 @@ Gift::Gift(string giftFilePath) {
 }
 
 Gift::~Gift() {
-    for (auto question : questions) {
-        delete question;
-    }
     questions.clear();
 }
