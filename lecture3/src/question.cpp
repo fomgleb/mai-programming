@@ -1,6 +1,6 @@
 #include "question.hpp"
 
-string Question::getText() {
+string Question::getText() const {
     return text;
 }
 
@@ -12,7 +12,7 @@ void Question::addAnswer(string text) {
     answers.push_back(text);
 }
 
-vector<string> Question::getAnswers() {
+vector<string> Question::getAnswers() const {
     return answers;
 }
 
@@ -24,6 +24,6 @@ void Question::setCorrectAnswerIndex(size_t newIndex) {
     correctAnswerIndex = newIndex;
 }
 
-size_t Question::getCorrectAnswerIndex() {
+size_t Question::getCorrectAnswerIndex() const {
     return correctAnswerIndex;
 }

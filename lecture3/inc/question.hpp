@@ -12,10 +12,10 @@ class Question {
     vector<string> answers;
     size_t correctAnswerIndex;
 public:
-    string getText();
+    string getText() const;
     void setText(string text);
     void addAnswer(string text);
-    vector<string> getAnswers();
+    vector<string> getAnswers() const;
     void setCorrectAnswerIndex(size_t newIndex);
-    size_t getCorrectAnswerIndex();
+    size_t getCorrectAnswerIndex() const;
 };
