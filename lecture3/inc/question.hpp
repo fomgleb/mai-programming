@@ -16,7 +16,7 @@ class Question {
 public:
     string getText() const;
     void setText(string text);
-    void addAnswer(string text);
+    void addAnswer(string text, bool correct);
     vector<string> getAnswers() const;
     void setCorrectAnswerIndex(size_t newIndex);
     size_t getCorrectAnswerIndex() const;

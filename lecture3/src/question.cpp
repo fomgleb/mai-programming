@@ -8,8 +8,11 @@ void Question::setText(string text) {
     this->text = text;
 }
 
-void Question::addAnswer(string text) {
+void Question::addAnswer(string text, bool correct) {
     answers.push_back(text);
+    if (correct) {
+        correctAnswerIndex = answers.size() - 1;
+    }
 }
 
 vector<string> Question::getAnswers() const {
