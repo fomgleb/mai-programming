@@ -1,6 +1,6 @@
 # General settings
 cmake_minimum_required(VERSION 3.27)
-project(practice1)
+project(lecture3)
 set(CMAKE_CXX_STANDARD 17)
 
 # Git submodules updating
