@@ -32,6 +32,21 @@ public:
         prevNode == nullptr ? (head = newNode) : (prevNode->next = newNode);
         size++;
     }
+    void Remove(size_t index) {
+        size_t currIndex = 0;
+        Node* currNode = head;
+        Node* prevNode = nullptr;
+        while (currNode != nullptr && currIndex != index) {
+            currIndex++;
+            prevNode = currNode;
+            currNode = currNode->next;
+        }
+
+        if (currNode == nullptr) return;
+        prevNode == nullptr ? (head = currNode->next) : (prevNode->next = currNode->next);
+        delete currNode;
+        size--;
+    }
     struct iterator {
         Node* current;
         iterator(Node* node) : current(node) {}
