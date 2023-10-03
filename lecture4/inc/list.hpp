@@ -9,6 +9,13 @@ class List {
         T data;
     }* head = nullptr;
 public:
+    ~List() {
+        Node* nextNode = nullptr;
+        for (Node* node = head; node != nullptr; node = nextNode) {
+            nextNode = node->next;
+            delete node;
+        }
+    }
     struct iterator {
         Node* current;
         iterator(Node* node) : current(node) {}
