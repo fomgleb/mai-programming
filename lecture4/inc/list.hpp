@@ -6,8 +6,8 @@ template <typename T>
 class List {
     size_t size = 0;
     struct Node {
-        Node* next;
-        T data;
+        Node* next = nullptr;
+        T data = T();
     }* head = nullptr;
 public:
     ~List() {
