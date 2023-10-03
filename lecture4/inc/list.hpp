@@ -18,7 +18,7 @@ public:
             delete node;
         }
     }
-    size_t GetSize() { return size; }
+    size_t GetSize() const { return size; }
     void Insert(T newElement, size_t index) {
         size_t currIndex = 0;
         Node* currNode = head;
@@ -48,7 +48,7 @@ public:
         delete currNode;
         size--;
     }
-    std::optional<T>Get(size_t index) {
+    std::optional<T>Get(size_t index) const {
         Node* node = head;
         for (size_t i = 0; i != index && node != nullptr; i++, node = node->next) { }
         return node == nullptr ? std::nullopt : std::optional<T>{node->data};
