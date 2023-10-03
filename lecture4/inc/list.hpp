@@ -4,6 +4,7 @@
 
 template <typename T>
 class List {
+    size_t size = 0;
     struct Node {
         Node* next;
         T data;
@@ -16,6 +17,7 @@ public:
             delete node;
         }
     }
+    size_t GetSize() { return size; }
     struct iterator {
         Node* current;
         iterator(Node* node) : current(node) {}
