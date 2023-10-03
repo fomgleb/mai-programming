@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <optional>
 
 template <typename T>
 class List {
@@ -46,6 +47,11 @@ public:
         prevNode == nullptr ? (head = currNode->next) : (prevNode->next = currNode->next);
         delete currNode;
         size--;
+    }
+    std::optional<T>Get(size_t index) {
+        Node* node = head;
+        for (size_t i = 0; i != index && node != nullptr; i++, node = node->next) { }
+        return node == nullptr ? std::nullopt : std::optional<T>{node->data};
     }
     struct iterator {
         Node* current;
