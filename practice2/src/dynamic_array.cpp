@@ -65,12 +65,12 @@ void DynamicArray::pushBack(int8_t value) {
 
 void DynamicArray::add(const DynamicArray &adding_array) {
     for (size_t i = 0; i < size && i < adding_array.size; i++) {
-        array[i] += adding_array.get(i);
+        array[i] += adding_array.array[i];
     }
 }
 
 void DynamicArray::subtract(const DynamicArray &subtracing_array) {
     for (size_t i = 0; i < size && i < subtracing_array.size; i++) {
-        array[i] -= subtracing_array.get(i);
+        array[i] -= subtracing_array.array[i];
     }
 }
