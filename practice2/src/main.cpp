@@ -24,16 +24,32 @@ int main() {
         int command = get_num();
         switch (command) {
         case 1:
-            std::cout << arrays[get_num() - 1]->get(get_num()) << std::endl; break;
+            try {
+                std::cout << arrays[get_num() - 1]->get(get_num()) << std::endl;
+            } catch (std::out_of_range) {
+                std::cout << "std:out_of_range" << std::endl;
+            }
+            break;
         case 2: {
             size_t array_index = get_num() - 1;
             size_t index = get_num();
             int8_t value = get_num();
-            arrays[array_index]->set(index, value);
+            try {
+                arrays[array_index]->set(index, value);
+            } catch (std::out_of_range) {
+                std::cout << "std:out_of_range" << std::endl;
+            } catch (std::invalid_argument) {
+                std::cout << "std:invalid_argument" << std::endl;
+            }
             break;
         }
         case 3:
-            arrays[get_num() - 1]->pushBack(get_num()); break;
+            try {
+                arrays[get_num() - 1]->pushBack(get_num());
+            } catch (std::invalid_argument) {
+                std::cout << "std:invalid_argument" << std::endl;
+            }
+             break;
         case 4:
             arrays[get_num() - 1]->print(); break;
         case 5:
