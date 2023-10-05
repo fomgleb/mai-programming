@@ -3,6 +3,10 @@
 #include <iostream>
 #include <string>
 
+using std::to_string;
+using std::out_of_range;
+using std::invalid_argument;
+
 class DynamicArray {
     int8_t* array = nullptr;
     size_t size = 0;
