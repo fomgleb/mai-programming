@@ -25,7 +25,7 @@ int main() {
         switch (command) {
         case 1:
             try {
-                std::cout << arrays[get_num() - 1]->get(get_num()) << std::endl;
+                std::cout << static_cast<int>(arrays[get_num() - 1]->get(get_num())) << std::endl;
             } catch (std::out_of_range) {
                 std::cout << "std:out_of_range" << std::endl;
             }
