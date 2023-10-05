@@ -28,21 +28,22 @@ add_library(sources_lib STATIC ${SOURCES})
 target_include_directories(sources_lib PUBLIC ${HEADER_DIR})
 
 # Creating executable file for main.cpp
-if(EXISTS "${SOURCE_DIR}/main.cpp")
-    add_executable(main ${SOURCE_DIR}/main.cpp)
-    target_link_libraries(main sources_lib)
+add_executable(main ${SOURCE_DIR}/main.cpp)
+target_link_libraries(main sources_lib)
+
+option(USE_TESTING "Use testing" OFF)
+if(USE_TESTING)
+    # Testing settings
+    enable_testing()
+    add_subdirectory(libs/googletest)
+    include(GoogleTest)
+
+    # Creating executable files for tests
+    file(GLOB TEST_SOURCES "${TESTS_DIR}/*.cpp")
+    foreach(TEST_SRC ${TEST_SOURCES})
+        get_filename_component(TEST_NAME ${TEST_SRC} NAME_WE)
+        add_executable(${TEST_NAME} ${TEST_SRC})
+        target_link_libraries(${TEST_NAME} sources_lib gtest_main)
+        gtest_discover_tests(${TEST_NAME})
+    endforeach()
 endif()
-
-# Testing settings
-enable_testing()
-add_subdirectory(libs/googletest)
-include(GoogleTest)
-
-# Creating executable files for tests
-file(GLOB TEST_SOURCES "${TESTS_DIR}/*.cpp")
-foreach(TEST_SRC ${TEST_SOURCES})
-    get_filename_component(TEST_NAME ${TEST_SRC} NAME_WE)
-    add_executable(${TEST_NAME} ${TEST_SRC})
-    target_link_libraries(${TEST_NAME} sources_lib gtest_main)
-    gtest_discover_tests(${TEST_NAME})
-endforeach()

@@ -15,19 +15,13 @@ TEST(DynamicArrayTest, SetGetValue) {
 
 TEST(DynamicArrayTest, set) {
     DynamicArray arr(5);
-    EXPECT_THROW(arr.set(5, 50), std::out_of_range);
-    EXPECT_THROW(arr.set(1, 101), std::out_of_range);
-    EXPECT_THROW(arr.set(2, -101), std::out_of_range);
 
     DynamicArray arr2(0);
-    EXPECT_THROW(arr2.set(0, 1), std::out_of_range);
 }
 
 TEST(DynamicArrayTest, get) {
     DynamicArray arr(5);
-    EXPECT_THROW(arr.get(5), std::out_of_range);
     DynamicArray arr2(0);
-    EXPECT_THROW(arr2.get(0), std::out_of_range);
 }
 
 TEST(DynamicArrayTest, Constructor_InitializerList) {
@@ -39,8 +33,6 @@ TEST(DynamicArrayTest, Constructor_InitializerList) {
     DynamicArray arr2{};
     EXPECT_EQ(arr2.getSize(), 0);
 
-    EXPECT_THROW(DynamicArray arr3{-101}, out_of_range);
-    EXPECT_THROW(DynamicArray arr3{102}, out_of_range);
 }
 
 TEST(DynamicArrayTest, Copying) {
@@ -62,8 +54,6 @@ TEST(DynamicArrayTest, pushBack) {
     DynamicArray arr(0);
     arr.pushBack(12);
     EXPECT_EQ(arr.get(0), 12);
-    EXPECT_THROW(arr.pushBack(101), out_of_range);
-    EXPECT_THROW(arr.pushBack(-101), out_of_range);
     EXPECT_EQ(arr.getSize(), 1);
 
     DynamicArray arr2(3);

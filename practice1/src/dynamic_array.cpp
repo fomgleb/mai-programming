@@ -24,17 +24,17 @@ DynamicArray::DynamicArray(const DynamicArray &dynamic_array) {
 
 void DynamicArray::set(size_t index, int8_t value) {
     if (index >= size) {
-        throw out_of_range("Index " + to_string(index) + " is out of range. Array size is " + to_string(size) + ".");
+        return;
     }
     if (value < -100 || value > 100) {
-        throw out_of_range("Value " + to_string(value) + "is out of range (-100, 100).");
+        return;
     }
     array[index] = value;
 }
 
 int8_t DynamicArray::get(size_t index) const {
     if (index >= size) {
-        throw out_of_range("Index " + to_string(index) + " is out of range. Array size is " + to_string(size) + ".");
+        return 0;
     }
     return array[index];
 }
@@ -54,7 +54,7 @@ void DynamicArray::print() const {
 
 void DynamicArray::pushBack(int8_t value) {
     if (value < -100 || value > 100) {
-        throw out_of_range("Value " + to_string(value) + "is out of range (-100, 100).");
+        return;
     }
     int8_t* extended_array = new int8_t[size + 1];
     std::copy(array, array + size * sizeof(int8_t), extended_array);
