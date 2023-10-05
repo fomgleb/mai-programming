@@ -44,12 +44,11 @@ size_t DynamicArray::getSize() const {
 }
 
 void DynamicArray::print() const {
-    for (size_t i = 0; i < size; i++) {
+    for (size_t i = 0; i < size - 1; i++) {
         std::cout << static_cast<int>(array[i]);
-        if (i >= size - 1) continue;
         std::cout << " ";
     }
-    std::cout << std::endl;
+    std::cout << static_cast<int>(array[size - 1]) << std::endl;
 }
 
 void DynamicArray::pushBack(int8_t value) {
