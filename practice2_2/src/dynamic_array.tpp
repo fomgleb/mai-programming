@@ -57,10 +57,10 @@ size_t DynamicArray<T>::getSize() const {
 template <typename T>
 void DynamicArray<T>::print() const {
     for (size_t i = 0; i < size - 1; i++) {
-        std::cout << static_cast<int>(array[i]);
+        std::cout << array[i];
         std::cout << " ";
     }
-    std::cout << static_cast<int>(array[size - 1]) << std::endl;
+    std::cout << array[size - 1] << std::endl;
 }
 
 template <typename T>
