@@ -56,11 +56,7 @@ size_t DynamicArray<T>::getSize() const {
 
 template <typename T>
 void DynamicArray<T>::print() const {
-    for (size_t i = 0; i < size - 1; i++) {
-        std::cout << array[i];
-        std::cout << " ";
-    }
-    std::cout << array[size - 1] << std::endl;
+    std::cout << *this << std::endl;
 }
 
 template <typename T>
@@ -89,4 +85,14 @@ void DynamicArray<T>::subtract(const DynamicArray &subtracing_array) {
     for (size_t i = 0; i < size && i < subtracing_array.size; i++) {
         array[i] -= subtracing_array.array[i];
     }
+}
+
+template <typename T>
+std::ostream& operator<<(std::ostream& stream, const DynamicArray<T>& dynamicArray) {
+    for (size_t i = 0; i < dynamicArray.getSize() - 1; i++) {
+        stream << dynamicArray.get(i);
+        stream << " ";
+    }
+    stream << dynamicArray.get(dynamicArray.getSize() - 1);
+    return stream;
 }
