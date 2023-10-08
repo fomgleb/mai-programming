@@ -6,18 +6,18 @@ int get_num() {
     return num;
 }
 
-DynamicArray<int8_t>* getArray() {
+DynamicArray<int>* getArray() {
     size_t arr_length = get_num();
-    DynamicArray<int8_t>* arr = new DynamicArray<int8_t>(arr_length);
+    DynamicArray<int>* arr = new DynamicArray<int>(arr_length);
     for (size_t i = 0; i < arr_length; ++i) {
-        int8_t element = get_num();
+        int element = get_num();
         arr->set(i, element);
     }
     return arr;
 }
 
 int main() {
-    DynamicArray<int8_t>* arrays[] = {getArray(), getArray()};
+    DynamicArray<int>* arrays[] = {getArray(), getArray()};
 
     size_t commands_count = get_num();
     for (size_t i = 0; i < commands_count; i++) {
@@ -33,7 +33,7 @@ int main() {
         case 2: {
             size_t array_index = get_num() - 1;
             size_t index = get_num();
-            int8_t value = get_num();
+            int value = get_num();
             try {
                 arrays[array_index]->set(index, value);
             } catch (std::out_of_range) {
