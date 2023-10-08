@@ -33,8 +33,10 @@ void DynamicArray<T>::set(size_t index, T value) {
     if (index >= size) {
         throw out_of_range("Index " + to_string(index) + " is out of range. Array size is " + to_string(size) + ".");
     }
-    if (value < -100 || value > 100) {
-        throw invalid_argument("Value " + to_string(value) + "is out of range (-100, 100).");
+    if constexpr (std::is_integral_v<T>) {
+        if (value < -100 || value > 100) {
+            throw invalid_argument("Value " + to_string(value) + "is out of range (-100, 100).");
+        }
     }
     array[index] = value;
 }
@@ -63,8 +65,10 @@ void DynamicArray<T>::print() const {
 
 template <typename T>
 void DynamicArray<T>::pushBack(T value) {
-    if (value < -100 || value > 100) {
-        throw invalid_argument("Value " + to_string(value) + "is out of range (-100, 100).");
+    if constexpr (std::is_integral_v<T>) {
+        if (value < -100 || value > 100) {
+            throw invalid_argument("Value " + to_string(value) + "is out of range (-100, 100).");
+        }
     }
     T* extended_array = new T[size + 1];
     std::copy(array, array + size * sizeof(T), extended_array);

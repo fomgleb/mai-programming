@@ -1,5 +1,6 @@
 #pragma once
 
+#include <type_traits>
 #include <iostream>
 #include <string>
 
@@ -22,7 +23,6 @@ public:
     void print() const;
     void pushBack(T value);
     void add(const DynamicArray &array);
-
     void subtract(const DynamicArray &array);
 };
 
