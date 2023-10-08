@@ -6,9 +6,9 @@ int get_num() {
     return num;
 }
 
-DynamicArray* getArray() {
+DynamicArray<int8_t>* getArray() {
     size_t arr_length = get_num();
-    DynamicArray* arr = new DynamicArray(arr_length);
+    DynamicArray<int8_t>* arr = new DynamicArray<int8_t>(arr_length);
     for (size_t i = 0; i < arr_length; ++i) {
         int8_t element = get_num();
         arr->set(i, element);
@@ -17,7 +17,7 @@ DynamicArray* getArray() {
 }
 
 int main() {
-    DynamicArray* arrays[] = {getArray(), getArray()};
+    DynamicArray<int8_t>* arrays[] = {getArray(), getArray()};
 
     size_t commands_count = get_num();
     for (size_t i = 0; i < commands_count; i++) {
