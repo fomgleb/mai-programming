@@ -24,6 +24,7 @@ public:
     void pushBack(T value);
     void add(const DynamicArray &array);
     void subtract(const DynamicArray &array);
+    double euclideanDistance(const DynamicArray<T>& other) const;
 };
 
 #include "dynamic_array.tpp"

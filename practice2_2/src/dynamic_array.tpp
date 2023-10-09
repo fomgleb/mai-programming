@@ -87,6 +87,24 @@ void DynamicArray<T>::subtract(const DynamicArray &subtracing_array) {
     }
 }
 
+template<typename T>
+double DynamicArray<T>::euclideanDistance(const DynamicArray &other) const {
+    if constexpr (!std::is_arithmetic_v<T> || !std::is_arithmetic_v<decltype(other)>) {
+        throw std::bad_typeid();
+    }
+    if (size != other.size) {
+        throw std::invalid_argument("Arrays must be the same size to calculate Euclidean distance.");
+    }
+
+    double sum = 0.0;
+    for (size_t i = 0; i < size; ++i) {
+        double diff = static_cast<double>(array[i]) - static_cast<double>(other.array[i]);
+        sum += std::pow(diff, 2);
+    }
+
+    return std::sqrt(sum);
+}
+
 template <typename T>
 std::ostream& operator<<(std::ostream& stream, const DynamicArray<T>& dynamicArray) {
     for (size_t i = 0; i < dynamicArray.getSize() - 1; i++) {
