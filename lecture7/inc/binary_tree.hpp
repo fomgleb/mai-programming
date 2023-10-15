@@ -14,4 +14,6 @@ class BinaryTree {
         shared_ptr<Node> right = nullptr;
     };
     shared_ptr<Node> root = nullptr;
+
+    shared_ptr<Node> GetNodeByData(int data);
 };
