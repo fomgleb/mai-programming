@@ -1,11 +1,17 @@
 #pragma once
 
 #include <memory>
+#include <optional>
+
+using std::optional;
+using std::shared_ptr;
+using std::nullopt;
 
 class BinaryTree {
     struct Node {
-        int data;
-        std::unique_ptr<Node> left;
-        std::unique_ptr<Node> right;
-    } root;
+        optional<int> data = nullopt;
+        shared_ptr<Node> left = nullptr;
+        shared_ptr<Node> right = nullptr;
+    };
+    shared_ptr<Node> root = nullptr;
 };
