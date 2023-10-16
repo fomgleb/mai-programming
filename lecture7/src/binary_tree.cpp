@@ -22,12 +22,20 @@ shared_ptr<BinaryTree::Node> BinaryTree::GetClosestNodeToDataValue(int data) con
 
 void BinaryTree::InsertData(int data) {
     shared_ptr<BinaryTree::Node> closest_node_to_data = GetClosestNodeToDataValue(data);
-    if (closest_node_to_data->data == data) return;
+    if (closest_node_to_data != nullptr && closest_node_to_data->data == data) return;
 
-    shared_ptr<BinaryTree::Node> new_node = make_shared<BinaryTree::Node>(data, closest_node_to_data);
-    if (data > new_node->parent->data) {
-        new_node->parent->right = new_node;
-    } else {
-        new_node->parent->left = new_node;
+    shared_ptr<BinaryTree::Node> new_node = make_shared<BinaryTree::Node>();
+    new_node->data = data;
+    new_node->parent = closest_node_to_data;
+    if (new_node->parent != nullptr) {
+        if (data > new_node->parent->data) {
+            new_node->parent->right = new_node;
+        } else {
+            new_node->parent->left = new_node;
+        }
+    }
+
+    if (root == nullptr) {
+        root = new_node;
     }
 }
