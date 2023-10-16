@@ -39,3 +39,33 @@ void BinaryTree::InsertData(int data) {
         root = new_node;
     }
 }
+
+void BinaryTree::printTree() const {
+    if (!root) return;
+
+    deque<pair<const Node*, string>> nodes;
+    nodes.push_back({root.get(), ""});
+
+    while (!nodes.empty()) {
+        auto [node, prefix] = nodes.front();
+        nodes.pop_front();
+
+        cout << prefix << (node->parent && node->parent->right.get() == node ? "right: " : "left: ");
+
+        if(node->data.has_value()) {
+            cout << node->data.value() << endl;
+        } else {
+            cout << "null" << endl;
+        }
+
+        prefix += (node->parent && node->parent->right.get() == node ? "    " : "|   ");
+
+        if (node->right) {
+            nodes.push_front({node->right.get(), prefix});
+        }
+
+        if (node->left) {
+            nodes.push_front({node->left.get(), prefix});
+        }
+    }
+}

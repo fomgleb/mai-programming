@@ -2,11 +2,19 @@
 
 #include <memory>
 #include <optional>
+#include <string>
+#include <iostream>
+#include <deque>
 
 using std::optional;
 using std::shared_ptr;
 using std::make_shared;
 using std::nullopt;
+using std::deque;
+using std::pair;
+using std::string;
+using std::cout;
+using std::endl;
 
 class BinaryTree {
     struct Node {
@@ -20,4 +28,5 @@ class BinaryTree {
     shared_ptr<Node> GetClosestNodeToDataValue(int data) const;
 public:
     void InsertData(int data);
+    void printTree() const;
 };
