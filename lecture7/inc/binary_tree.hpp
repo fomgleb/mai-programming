@@ -16,5 +16,5 @@ class BinaryTree {
     };
     shared_ptr<Node> root = nullptr;
 
-    shared_ptr<Node> GetNodeByData(int data);
+    shared_ptr<Node> GetClosestNodeToDataValue(int data) const;
 };
