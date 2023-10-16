@@ -18,7 +18,7 @@ int main() {
     binaryTree.InsertData(2);
 
 
-    binaryTree.printTree();
+    binaryTree.PrintTree();
     // `printTree` output:
     // left: 124
     // |   left: 1

@@ -40,7 +40,7 @@ void BinaryTree::InsertData(int data) {
     }
 }
 
-void BinaryTree::printTree() const {
+void BinaryTree::PrintTree() const {
     if (!root) return;
 
     deque<pair<const Node*, string>> nodes;

@@ -28,5 +28,5 @@ class BinaryTree {
     shared_ptr<Node> GetClosestNodeToDataValue(int data) const;
 public:
     void InsertData(int data);
-    void printTree() const;
+    void PrintTree() const;
 };
