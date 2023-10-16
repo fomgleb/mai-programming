@@ -5,6 +5,7 @@
 
 using std::optional;
 using std::shared_ptr;
+using std::make_shared;
 using std::nullopt;
 
 class BinaryTree {
@@ -17,4 +18,5 @@ class BinaryTree {
     shared_ptr<Node> root = nullptr;
 
     shared_ptr<Node> GetClosestNodeToDataValue(int data) const;
+    void InsertData(int data);
 };
