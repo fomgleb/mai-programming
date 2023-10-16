@@ -10,6 +10,7 @@ using std::nullopt;
 class BinaryTree {
     struct Node {
         optional<int> data = nullopt;
+        shared_ptr<Node> parent = nullptr;
         shared_ptr<Node> left = nullptr;
         shared_ptr<Node> right = nullptr;
     };
