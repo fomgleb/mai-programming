@@ -19,6 +19,20 @@ int main() {
 
 
     binaryTree.printTree();
+    // `printTree` output:
+    // left: 124
+    // |   left: 1
+    // |   |   left: -18
+    // |   |   right: 20
+    // |   |       left: 8
+    // |   |       |   left: 3
+    // |   |       |   |   left: 2
+    // |   |       |   right: 9
+    // |   |       right: 39
+    // |   |           left: 35
+    // |   right: 299
+    // |       left: 143
+    // |       right: 311
 
     return 0;
 }
